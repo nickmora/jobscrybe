@@ -16,7 +16,12 @@ const userSchema = new Schema({
       date: {
         type: Date,
         default: Date.now
+      },
+      location: {
+      type: String,
+      required: true
       }
+
     
 });
 const User = mongoose.model('User', UserSchema);
