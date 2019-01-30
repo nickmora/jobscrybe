@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { func } from 'prop-types';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,6 +12,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
+import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 const styles = theme => ({
   main: {
@@ -45,11 +47,38 @@ const styles = theme => ({
   },
 });
 
-function SignIn(props) {
-  const { classes } = props;
+class SignIn extends React.Component{
 
-  return (
-    <main className={classes.main}>
+  state={
+    email:"",
+    password:""
+  }
+
+  loginUser = (email, pass)=>{
+    axios.post("/api/login", {
+      email: email,
+      password: pass,
+    }).then(data=> console.log(data))
+  }
+
+  handleSubmit = event=>{
+    event.preventDefault();
+    console.log("heyyy");
+    if(!this.state.email||!this.state.password){
+      alert("Fields are incomplete, please enter your name and password");
+    } else{
+      this.loginUser(this.state.email, this.state.password);
+      this.setState({
+        email:"",
+        password:"",
+      })
+    }
+  }
+
+  render(){
+    const {classes} = this.props;
+    return(
+      <main className={classes.main}>
       <CssBaseline />
       <Paper className={classes.paper}>
         <Avatar className={classes.avatar}>
@@ -72,6 +101,7 @@ function SignIn(props) {
             label="Remember me"
           />
           <Button
+            onClick={()=>this.handleSubmit}
             type="submit"
             fullWidth
             variant="contained"
@@ -81,9 +111,12 @@ function SignIn(props) {
             Sign in
           </Button>
         </form>
+      <p>No account? Sign up <Link to="/SignUp">here</Link></p>
       </Paper>
     </main>
-  );
+    )
+  }
+
 }
 
 SignIn.propTypes = {
@@ -91,3 +124,7 @@ SignIn.propTypes = {
 };
 
 export default withStyles(styles)(SignIn);
+
+
+
+
