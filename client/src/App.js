@@ -5,6 +5,7 @@ import NavBar from './Components/NavBar';
 import SignIn from './pages/SignIn';
 import NoMatch from "./pages/NoMatch"
 import MainPage from "./pages/MainPage"
+import SignUp from "./pages/SignUp"
 
 
 class App extends Component {
@@ -15,6 +16,7 @@ class App extends Component {
           {/* <NavBar /> */}
           <Switch>
             <Route exact path="/" component={SignIn} />
+            <Route exact path="/SignUp" component={SignUp} />
             <Route exact path="/main" component={MainPage} />
             <Route component = {NoMatch} />
           </Switch>

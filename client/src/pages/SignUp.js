@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes, { func } from 'prop-types';
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
+import {Avatar, Button} from '@material-ui/core/';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -14,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import API from '../utils/API';
 
 const styles = theme => ({
   main: {
@@ -47,27 +47,47 @@ const styles = theme => ({
   },
 });
 
-class SignIn extends React.Component{
+class SignUp extends React.Component{
 
   state={
     email:"",
     password:""
-  }
+  };
 
-  loginUser = (email, pass)=>{
-    axios.post("/api/login", {
-      email: email,
-      password: pass,
-    }).then(data=> console.log(data))
-  }
+  handleInputChange = event => {
+    // Getting the value and name of the input which triggered the change
+    let value = event.target.value;
+    const name = event.target.name;
+
+    if (name === "password") {
+      value = value.substring(0, 15);
+    }
+    // Updating the input's state
+    this.setState({
+      [name]: value
+    });
+  };
+
+  // signUpUser = (email, pass)=>{
+  //   axios.post("/api/signup", {
+  //     email: email,
+  //     password: pass,
+  //   }).then(data=> console.log(data))
+  // }
 
   handleSubmit = event=>{
     event.preventDefault();
-    console.log("heyyy");
+    console.log(this.state.email, this.state.password)
     if(!this.state.email||!this.state.password){
       alert("Fields are incomplete, please enter your name and password");
     } else{
-      this.loginUser(this.state.email, this.state.password);
+
+      API.signUp({
+        email:this.state.email, 
+        password:this.state.password
+      })
+      .then(alert("Congrats, you've signed up"))
+      .catch(err=>console.log(err));
       this.setState({
         email:"",
         password:"",
@@ -85,33 +105,33 @@ class SignIn extends React.Component{
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign in
+          Sign Up!
         </Typography>
         <form className={classes.form}>
           <FormControl margin="normal" required fullWidth>
             <InputLabel htmlFor="email">Email Address</InputLabel>
-            <Input id="email" name="email" autoComplete="email" autoFocus />
+            <Input value={this.state.email} onChange={this.handleInputChange} id="email" name="email" autoComplete="email" autoFocus />
           </FormControl>
           <FormControl margin="normal" required fullWidth>
             <InputLabel htmlFor="password">Password</InputLabel>
-            <Input name="password" type="password" id="password" autoComplete="current-password" />
+            <Input value={this.state.password} onChange={this.handleInputChange} name="password" type="password" id="password" autoComplete="current-password" />
           </FormControl>
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
           />
           <Button
-            onClick={()=>this.handleSubmit}
+            onClick={this.handleSubmit}
             type="submit"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
           >
-            Sign in
+            Sign Up
           </Button>
         </form>
-      <p>No account? Sign up <Link to="/SignUp">here</Link></p>
+      <Typography variant="body1">Already have an account? Sign in <Link to="/">here</Link></Typography>
       </Paper>
     </main>
     )
@@ -119,11 +139,11 @@ class SignIn extends React.Component{
 
 }
 
-SignIn.propTypes = {
+SignUp.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(SignIn);
+export default withStyles(styles)(SignUp);
 
 
 
