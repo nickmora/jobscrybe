@@ -86,7 +86,10 @@ class SignUp extends React.Component{
         email:this.state.email, 
         password:this.state.password
       })
-      .then(alert("Congrats, you've signed up"))
+      .then(resp=>{
+        window.location.href = "/main"  
+      })
+
       .catch(err=>console.log(err));
       this.setState({
         email:"",

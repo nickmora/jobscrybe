@@ -23,25 +23,24 @@ const passport = require("../config/passport")
 const isAuthenticated=require("../config/middleware/isAuthenticated")
 
 module.exports=function(app){
-    app.get("/", (req,res)=>{
+    app.get("/main", (req,res)=>{
         res.json("hey")
     })
-    app.post("api/login", passport.authenticate("local"), (req,res)=>{
-        res.json("/members");
-    });
+    // app.post("api/login", passport.authenticate("local"), (req,res)=>{
+    //     res.json("/members");
+    // });
     app.post("/api/signup", (req,res)=>{
         console.log(req.body);
         db.User.create({
             email:req.body.email,
             password:req.body.password
-        }).then(()=>{
-            console.log("did it!")
-            res.redirect("/");
+        }).then(function(){
+            res.redirect("/main")
         }).catch(err=>{
             console.log(err);
             res.json(err);
-        })
-    })
+        });
+    });
     app.get("/logout", (req,res)=>{
         req.logout();
         res.redirect("/");
