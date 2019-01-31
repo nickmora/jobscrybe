@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
     name: {
         type: String,
-        required: true
+        required: false
       },
       email: {
         type: String,
@@ -13,20 +13,13 @@ const userSchema = new Schema({
         type: String,
         required: true
       },
-      date: {
-        type: Date,
-        default: Date.now
-      },
-      location: {
-      type: String,
-      required: true
-      }
 
+      // date: {
+      //   type: Date,
+      //   default: Date.now
+      // }
     
 });
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;
-module.exports ={
-    Resume:require("./resume")
-}

@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import API from '../utils/API';
 
 const styles = theme => ({
   main: {
@@ -46,7 +47,7 @@ const styles = theme => ({
   },
 });
 
-class SignIn extends React.Component{
+class SignUp extends React.Component{
 
   state={
     email:"",
@@ -67,21 +68,26 @@ class SignIn extends React.Component{
     });
   };
 
-  loginUser = (email, pass)=>{
-    axios.post("/api/signup", {
-      email: email,
-      password: pass,
-    }).then(data=> console.log(data))
-  }
+  // signUpUser = (email, pass)=>{
+  //   axios.post("/api/signup", {
+  //     email: email,
+  //     password: pass,
+  //   }).then(data=> console.log(data))
+  // }
 
   handleSubmit = event=>{
-    // event.preventDefault();
+    event.preventDefault();
     console.log(this.state.email, this.state.password)
     if(!this.state.email||!this.state.password){
       alert("Fields are incomplete, please enter your name and password");
     } else{
 
-      this.loginUser(this.state.email, this.state.password);
+      API.signUp({
+        email:this.state.email, 
+        password:this.state.password
+      })
+      .then(alert("Congrats, you've signed up"))
+      .catch(err=>console.log(err));
       this.setState({
         email:"",
         password:"",
@@ -115,20 +121,17 @@ class SignIn extends React.Component{
             label="Remember me"
           />
           <Button
-            onClick={()=>{
-              console.log("okau");
-              this.handleSubmit()
-            }}
-            // type="submit"
+            onClick={this.handleSubmit}
+            type="submit"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
           >
-            Sign in
+            Sign Up
           </Button>
         </form>
-      <p>Already have an account? Sign in <Link to="/">here</Link></p>
+      <Typography variant="body1">Already have an account? Sign in <Link to="/">here</Link></Typography>
       </Paper>
     </main>
     )
@@ -136,11 +139,11 @@ class SignIn extends React.Component{
 
 }
 
-SignIn.propTypes = {
+SignUp.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(SignIn);
+export default withStyles(styles)(SignUp);
 
 
 
