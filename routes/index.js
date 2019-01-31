@@ -17,6 +17,7 @@
 
 // const router = require("express").Router();
 // const resumeRoutes = require("./api/resumeSaved");
+
 const db = require("../models");
 const passport = require("../config/passport")
 const isAuthenticated=require("../config/middleware/isAuthenticated")
@@ -45,6 +46,7 @@ module.exports=function(app){
         req.logout();
         res.redirect("/");
     });
+
 }
 //     //html routes here
 
@@ -77,3 +79,4 @@ module.exports=function(app){
 // // router.use("/resumeSaved", resumeRoutes);
 
 // // module.exports = router;
+
