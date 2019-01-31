@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 // const router = require("express").Router();
 // const userController = require("../controllers/userController")
@@ -18,6 +17,7 @@
 
 // const router = require("express").Router();
 // const resumeRoutes = require("./api/resumeSaved");
+
 const db = require("../models");
 const passport = require("../config/passport")
 const isAuthenticated=require("../config/middleware/isAuthenticated")
@@ -36,7 +36,7 @@ module.exports=function(app){
             password:req.body.password
         }).then(()=>{
             console.log("did it!")
-            res.redirect(307, "/api/login");
+            res.redirect("/");
         }).catch(err=>{
             console.log(err);
             res.json(err);
@@ -46,6 +46,7 @@ module.exports=function(app){
         req.logout();
         res.redirect("/");
     });
+
 }
 //     //html routes here
 
@@ -78,18 +79,4 @@ module.exports=function(app){
 // // router.use("/resumeSaved", resumeRoutes);
 
 // // module.exports = router;
-=======
-const path = require("path");
-const router = require("express").Router();
-const apiRoutes = require("./api");
 
-// API Routes
-router.use("/api", apiRoutes);
-
-// If no API routes are hit, send the React app
-router.use(function(req, res) {
-  res.sendFile(path.join(__dirname, "../client/build/index.html"));
-});
-
-module.exports = router;
->>>>>>> master
