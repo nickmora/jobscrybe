@@ -1,4 +1,5 @@
 module.exports = {
     User: require("./user"),
-    Resume: require("./resume")
+    Resume: require("./resume"),
+    Job: require("./job")
 };
