@@ -1,25 +1,57 @@
 import React from "react";
+import PropTypes, {func} from "prop-types";
 import AppBar from "@material-ui/core/AppBar"
 import Toolbar from '@material-ui/core/Toolbar';
 import logo from "../logo.svg"
 import Typography from "@material-ui/core/Typography"
+import Grid from "@material-ui/core/Grid";
+import {Link} from "react-router-dom";
+import { withStyles } from "@material-ui/core";
+import { from } from "rxjs";
+
+const styles = theme =>({
+    paper: {
+        marginTop: theme.spacing.unit * 8,
+    }
+})
 
 class NavBar extends React.Component{
     render(){
+        const {classes}=this.props;
         return(
             <div>
                 <AppBar position="static">
                     <Toolbar>
-                        <img src = {logo} alt="home/logo" />
-                        <Typography variant="h4" color="inherit">
-                            Home
-                        </Typography>
-                        <Typography variant="h4" color="inherit">
-                            Home
-                        </Typography>
-                        <Typography variant="h4" color="inherit">
-                            Home
-                        </Typography>
+                        <Grid container spacing={24}>
+                            <Grid item xs={1}>
+                                <img src = {logo} alt="home/logo" />
+                            </Grid>
+                            <Grid item xs={2}>
+                                <Typography variant="h5" color="inherit">
+                                    Search
+                                </Typography>
+                            </Grid>
+                            <Grid item xs={2}>
+                                <Typography variant="h5" color="inherit">
+                                    My Resumes
+                                </Typography>
+                            </Grid>
+                            <Grid item xs={2}>
+                                <Typography variant="h5" color="inherit">
+                                    Saved Jobs
+                                </Typography>
+                            </Grid>
+                            <Grid item xs={2}>
+                                <Typography variant="h5" color="inherit">
+                                    My Profile
+                                </Typography>
+                            </Grid>
+                            <Grid item xs={2}>
+                                <Typography variant="h5" color="inherit">
+                                    Logout
+                                </Typography>
+                            </Grid>
+                        </Grid>
                     </Toolbar>
                 </AppBar>
             </div>
@@ -27,4 +59,8 @@ class NavBar extends React.Component{
     }
 }
 
-export default NavBar;
+NavBar.propTypes = {
+    classes: PropTypes.object.isRequired,
+}
+
+export default withStyles(styles)(NavBar);
