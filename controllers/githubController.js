@@ -10,7 +10,7 @@ module.exports = {
   findAll: function(req, res) {
     const { query: params } = req;
     axios
-      .get("https://jobs.github.com/positions.json?search=", {
+      .get("https://jobs.github.com/positions.json?description=node&location=san+francisco", {
         params
       })
       .then(results =>
