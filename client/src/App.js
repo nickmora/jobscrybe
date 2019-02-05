@@ -8,7 +8,6 @@ import MainPage from "./pages/MainPage"
 import SignUp from "./pages/SignUp"
 import Search from "./pages/Search"
 
-
 class App extends Component {
   render() {
     return (
