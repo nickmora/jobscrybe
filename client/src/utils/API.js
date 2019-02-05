@@ -1,6 +1,22 @@
 import axios from "axios";
 
 export default {
+    // Gets jobs from the Github API
+    getJobs: function(q) {
+      return axios.get("/api/github", { params: { q: "search:" + q } });
+    },
+    // Gets all saved jobs
+    getSavedJobs: function() {
+      return axios.get("/api/jobs");
+    },
+    // Deletes the saved job with the given id
+    deleteJobs: function(id) {
+      return axios.delete("/api/jobs/" + id);
+    },
+    // Saves a job to the database
+    saveBook: function(jobData) {
+      return axios.post("/api/books", jobData);
+    },
 //   // Gets all books
 //   getBooks: function() {
 //     return axios.get("/api/books");
