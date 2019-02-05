@@ -10,9 +10,9 @@ import Grid from "@material-ui/core/Grid"
 import API from "../utils/API"
 
 const styles = theme =>({
-    paper: {
+    Paper: {
         marginTop: theme.spacing.unit * 8,
-    }
+    },
 })
 
 
@@ -56,7 +56,7 @@ class SearchForm extends React.Component{
         
         return (
             <Fragment>
-                <Grid container spacing={24}>
+                <Grid container spacing={24} alignItems="flex-end">
                     <Grid item xs={6}>
                         <FormControl margin="normal">
                             <InputLabel htmlFor="search">Keywords</InputLabel>
@@ -70,7 +70,7 @@ class SearchForm extends React.Component{
                         </FormControl>
                     </Grid>
                     
-                    <Grid item xs={3}>
+                    <Grid item xs={4}>
 
                         <Button
                             onClick={this.handleSubmit}
