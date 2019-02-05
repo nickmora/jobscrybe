@@ -1,21 +1,20 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const jobSchema=new Schema({
-    api_id: {type: String, required:true},
-    api_job_id: {type: String, required:true},
-    title: {type: String, required:true},
-    date_created: {type: String, required:true},
-    job_type: {type: String, required:true},
-    description: {type: String, required:true},
-    company_name: {type: String, required:true},
-    company_logo: {type: String, required:false},
-    company_url: {type: String, required:true},
-    location: {type: String, required:true},
-    apply_url: {type: String, required:true},
-    api_logo: {type: String, required:false}
+const jobSchema = new Schema({
+  job_id: { type: String, required: true },
+  job_type: { type: String, required: true },
+  url: { type: [String], required: true },
+  created_at: { type: String, required: true },
+  company: { type: String, required: true },
+  company_url: { type: String, required: true },
+  location: { type: String, required: true },
+  title: { type: String, required: true },
+  description: { type: String, required: true },
+  how_to_apply: { type: String, required: true },
+  comapny_logo: { type: String, required: true }
 });
 
 const Job = mongoose.model("Job", jobSchema);
 
-module.exports=Job;
+module.exports = Job;
