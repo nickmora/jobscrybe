@@ -14,6 +14,7 @@ import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import API from "../utils/API"
 
 const styles = theme => ({
   main: {
@@ -54,26 +55,48 @@ class SignIn extends React.Component{
     password:""
   }
 
-  loginUser = (email, pass)=>{
-    axios.post("/api/login", {
-      email: email,
-      password: pass,
-    }).then(data=> console.log(data))
-  }
+  // loginUser = (email, pass)=>{
+  //   axios.post("/api/login", {
+  //     email: email,
+  //     password: pass,
+  //   }).then(data=> console.log(data))
+  // }
 
   handleSubmit = event=>{
     event.preventDefault();
-    console.log("heyyy");
+    console.log(this.state.email, this.state.password);
     if(!this.state.email||!this.state.password){
       alert("Fields are incomplete, please enter your name and password");
     } else{
-      this.loginUser(this.state.email, this.state.password);
-      this.setState({
-        email:"",
-        password:"",
+      console.log("poop");
+      API.logIn({
+        email:this.state.email,
+        password:this.state.password
+      })
+      // this.loginUser(this.state.email, this.state.password);
+      // this.setState({
+      //   email:"",
+      //   password:"",
+      // })
+      .then(resp=>{
+        console.log(resp);
       })
     }
   }
+
+  handleInputChange = event => {
+    // Getting the value and name of the input which triggered the change
+    let value = event.target.value;
+    const name = event.target.name;
+
+    if (name === "password") {
+      value = value.substring(0, 15);
+    }
+    // Updating the input's state
+    this.setState({
+      [name]: value
+    });
+  };
 
   render(){
     const {classes} = this.props;
@@ -90,18 +113,18 @@ class SignIn extends React.Component{
         <form className={classes.form}>
           <FormControl margin="normal" required fullWidth>
             <InputLabel htmlFor="email">Email Address</InputLabel>
-            <Input id="email" name="email" autoComplete="email" autoFocus />
+            <Input value={this.state.email} onChange={this.handleInputChange} id="email" name="email" autoComplete="email" autoFocus />
           </FormControl>
           <FormControl margin="normal" required fullWidth>
             <InputLabel htmlFor="password">Password</InputLabel>
-            <Input name="password" type="password" id="password" autoComplete="current-password" />
+            <Input value={this.state.password} onChange={this.handleInputChange} name="password" type="password" id="password" autoComplete="current-password" />
           </FormControl>
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
           />
           <Button
-            onClick={()=>this.handleSubmit}
+            onClick= {this.handleSubmit}
             type="submit"
             fullWidth
             variant="contained"

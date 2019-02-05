@@ -4,7 +4,6 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
     name: {
         type: String,
-        required: false
       },
       email: {
         type: String,
@@ -13,7 +12,7 @@ const UserSchema = new Schema({
       password: {
         type: String,
         required: true
-      },
+      }
 
       // date: {
       //   type: Date,
@@ -21,26 +20,13 @@ const UserSchema = new Schema({
       // }
 });
 
-// UserSchema.pre("save", function(next){
-//   const user = this;
-//   console.log(user);
-//   if(!user.isModified("password")) return next;
-//   bcrypt.genSalt(10, function(err, salt){
-//     if(err) return next(err);
-//     bcrypt.hash(user.password, salt, (err, hash)=>{
-//       if (err) return next(err);
-//       user.password = hash;
-//       next();
-//     })
-//   })
-// })
 
 UserSchema.methods.generateHash = password=>{
   return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
 }
 
 UserSchema.methods.validPassword = password=>{
-  return bcrypt.compareSync(password, this.local.password)
+  return bcrypt.compareSync(password, this.password)
 }
 
 const User = mongoose.model('User', UserSchema);

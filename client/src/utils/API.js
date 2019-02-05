@@ -18,6 +18,9 @@ export default {
 //     return axios.post("/api/books", bookData);
 //   },
   signUp: function(info){
-    return axios.post("/api/signup", info);
+    return axios.post("/api/signup/", info);
+  },
+  logIn: function(info){
+    return axios.post("/api/login", info);
   }
 };
