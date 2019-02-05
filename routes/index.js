@@ -3,9 +3,9 @@ const db = require("../models");
 
 module.exports=function(app, passport){
     app.get("/main", (req,res)=>{
-        res.json("hey")
+        res.redirect("/main")
     })
-    
+
     app.post("/api/signup/", passport.authenticate("local-signup", {
         successRedirect:"/main",
         failureReditrect:"/signup"
@@ -17,13 +17,12 @@ module.exports=function(app, passport){
         res.redirect("/");
     });
 
-    app.post("/api/login", (req,res)=>{
-        console.log("HIT")
+    app.post("/api/login/",
         passport.authenticate("local-login", {
             successRedirect: "/main",
             failureReditrect: "/login"
         })
-    });
+    );
 
     app.get('/logout', function(req, res) {
 		req.logout();

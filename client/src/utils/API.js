@@ -21,6 +21,7 @@ export default {
     return axios.post("/api/signup/", info);
   },
   logIn: function(info){
-    return axios.post("/api/login", info);
+    // console.log("login works")
+    return axios.post("/api/login/", info);
   }
 };

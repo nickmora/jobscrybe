@@ -81,13 +81,13 @@ class SignUp extends React.Component{
     if(!this.state.email||!this.state.password){
       alert("Fields are incomplete, please enter your name and password");
     } else{
-      console.log("worjig")
       API.signUp({
         email:this.state.email, 
         password:this.state.password
       })
       .then(resp=>{
-        window.location.href = "/main"  
+        console.log(resp)
+        // window.location.href = "/main"  
       })
 
       .catch(err=>console.log(err));
