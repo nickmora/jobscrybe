@@ -2,8 +2,9 @@
 const db = require("../models");
 
 module.exports=function(app, passport){
-    app.get("/main", (req,res)=>{
-        res.redirect("/main")
+    app.get("/main", isLoggedIn, (req,res)=>{
+        console.log("this is where I should be redirecting the url")
+        res.json(req.user)
     })
 
     app.post("/api/signup/", passport.authenticate("local-signup", {
@@ -11,11 +12,6 @@ module.exports=function(app, passport){
         failureReditrect:"/signup"
     }));
 
-
-    app.get("/logout", (req,res)=>{
-        req.logout();
-        res.redirect("/");
-    });
 
     app.post("/api/login/",
         passport.authenticate("local-login", {

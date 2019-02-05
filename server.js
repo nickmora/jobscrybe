@@ -21,9 +21,15 @@ app.use(logger("dev"));
 app.use(passport.initialize());
 app.use(passport.session());
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+
 
 // API routes
 const routes = require("./routes")(app, passport)
+
+
 
 // router.route("/api/signup")
 //     .post(userController.create);
