@@ -3,7 +3,7 @@ import axios from "axios";
 export default {
     // Gets jobs from the Github API
     getJobs: function(q, loc) {
-      return axios.get("/api/github", { params: { q: "search:" + q, loc: "location:" + loc } });
+      return axios.get(`https://jobs.github.com/positions.json?description=${q}&location=${loc}`).then(data=>{console.log(data)});
     },
     // Gets all saved jobs
     getSavedJobs: function() {
@@ -14,8 +14,8 @@ export default {
       return axios.delete("/api/jobs/" + id);
     },
     // Saves a job to the database
-    saveBook: function(jobData) {
-      return axios.post("/api/books", jobData);
+    saveJob: function(jobData) {
+      return axios.post("/api/jobs", jobData);
     },
 //   // Gets all books
 //   getBooks: function() {
