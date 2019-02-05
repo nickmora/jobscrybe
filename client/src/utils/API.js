@@ -2,8 +2,8 @@ import axios from "axios";
 
 export default {
     // Gets jobs from the Github API
-    getJobs: function(q) {
-      return axios.get("/api/github", { params: { q: "search:" + q } });
+    getJobs: function(q, loc) {
+      return axios.get("/api/github", { params: { q: "search:" + q, loc: "location:" + loc } });
     },
     // Gets all saved jobs
     getSavedJobs: function() {
