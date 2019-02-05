@@ -73,11 +73,14 @@ class SignIn extends React.Component{
         email:this.state.email,
         password:this.state.password
       })
-      .then(()=>{
+      .then((resp)=>{
         this.setState({
           email:"",
           password:"",
-        })
+        });
+        if(resp.status===200){
+          this.props.history.push("/main")
+        }
       })
     }
   }

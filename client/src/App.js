@@ -6,6 +6,7 @@ import SignIn from './pages/SignIn';
 import NoMatch from "./pages/NoMatch"
 import MainPage from "./pages/MainPage"
 import SignUp from "./pages/SignUp"
+import Search from "./pages/Search"
 
 
 class App extends Component {
@@ -18,6 +19,7 @@ class App extends Component {
             <Route exact path="/" component={SignIn} />
             <Route exact path="/SignUp" component={SignUp} />
             <Route exact path="/main" component={MainPage} />
+            <Route exact path="/Search" component={Search} />
             <Route component = {NoMatch} />
           </Switch>
         </div>
