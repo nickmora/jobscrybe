@@ -4,7 +4,6 @@ import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
@@ -16,6 +15,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems, secondaryListItems } from './ListItems';
 import SimpleTable from './SimpleTable';
+import NavBar from '../../Components/NavBar';
 
 const drawerWidth = 240;
 
@@ -115,7 +115,7 @@ class Dashboard extends React.Component {
     return (
       <div className={classes.root}>
         <CssBaseline />
-        <AppBar
+        <NavBar
           position="absolute"
           className={classNames(classes.appBar, this.state.open && classes.appBarShift)}
         >
@@ -146,7 +146,7 @@ class Dashboard extends React.Component {
               </Badge>
             </IconButton>
           </Toolbar>
-        </AppBar>
+        </NavBar>
         <Drawer
           variant="permanent"
           classes={{

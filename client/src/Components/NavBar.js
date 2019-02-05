@@ -8,6 +8,7 @@ import Grid from "@material-ui/core/Grid";
 import {Link} from "react-router-dom";
 import { withStyles } from "@material-ui/core";
 import { from } from "rxjs";
+import NavTabs from "./NavTabs"
 
 const styles = theme =>({
     paper: {
@@ -23,7 +24,8 @@ class NavBar extends React.Component{
                 <AppBar position="static">
                     <Toolbar>
                         <Grid container spacing={24}>
-                            <Grid item xs={1}>
+                            <NavTabs />
+                            {/* <Grid item xs={1}>
                                 <img src = {logo} alt="home/logo" />
                             </Grid>
                             <Grid item xs={2}>
@@ -50,7 +52,7 @@ class NavBar extends React.Component{
                                 <Typography variant="h5" color="inherit">
                                     Logout
                                 </Typography>
-                            </Grid>
+                            </Grid> */}
                         </Grid>
                     </Toolbar>
                 </AppBar>
