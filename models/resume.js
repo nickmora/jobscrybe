@@ -2,7 +2,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const resumeSchema=new Schema({
-    text: String,
+    title: {type: String, required: true, default: Date.now},
+    description:{type: String},
+    date: {type: Date, default: Date.now},
+    body: {type: String, required: true},
     user: {type: String, required:true}
 })
 

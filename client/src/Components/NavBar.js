@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes, {func} from "prop-types";
 import AppBar from "@material-ui/core/AppBar"
 import Toolbar from '@material-ui/core/Toolbar';
-import logo from "../logo.svg"
 import Typography from "@material-ui/core/Typography"
 import Grid from "@material-ui/core/Grid";
 import {Link} from "react-router-dom";
@@ -10,11 +9,11 @@ import { withStyles } from "@material-ui/core";
 import { from } from "rxjs";
 import NavTabs from "./NavTabs"
 
-const styles = theme =>({
-    paper: {
-        marginTop: theme.spacing.unit * 8,
-    }
-})
+// const styles = theme =>({
+//     paper: {
+//         marginTop: theme.spacing.unit * 8,
+//     }
+// })
 
 class NavBar extends React.Component{
     render(){
@@ -27,8 +26,9 @@ class NavBar extends React.Component{
                             <NavTabs />
                             {/* <Grid item xs={1}>
                                 <img src = {logo} alt="home/logo" />
-                            </Grid>
-                            <Grid item xs={2}>
+                            </Grid> */}
+                            
+                            {/* <Grid item xs={2}>
                                 <Typography variant="h5" color="inherit">
                                     Search
                                 </Typography>
@@ -65,4 +65,4 @@ NavBar.propTypes = {
     classes: PropTypes.object.isRequired,
 }
 
-export default withStyles(styles)(NavBar);
+export default (NavBar);
