@@ -15,7 +15,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    console.log(req, "controller!")
+    // console.log(req, "controller!")
     db.Resume
       .create(req)
       .then(function(dbModel){

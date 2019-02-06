@@ -48,7 +48,9 @@ class CopyPasteModal extends React.Component {
       API.addResume({
         title: this.state.title, 
         description:this.state.description,
-        resumeBody: this.state.resumeBody,
+        body: this.state.resumeBody,
+        user: "default",
+        date: Date.now
       })
       .then(resp=>{
         console.log(resp)
@@ -62,7 +64,6 @@ class CopyPasteModal extends React.Component {
       this.setState({
         description:"",
         title:"",
-        resumeBody:"",
         resumeBody:"",
       })
     }
