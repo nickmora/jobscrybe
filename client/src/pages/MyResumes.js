@@ -76,7 +76,7 @@ function MyReusmes(props) {
             <div className={classes.heroButtons}>
               <Grid container spacing={16} justify="center">
                 <Grid item>
-                  <Button variant="contained" color="primary">
+                  <Button disabled variant="contained" color="primary">
                     Upload a resume here
                   </Button>
                 </Grid>
