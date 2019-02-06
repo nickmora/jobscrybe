@@ -1,14 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
+import CameraIcon from '@material-ui/icons/PhotoCamera';
 import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
+import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-import CopyPasteModal from "../Components/CopyPasteModal";
-import Resume from "../Components/ResumeCard"
 
 const styles = theme => ({
   appBar: {
@@ -16,6 +20,9 @@ const styles = theme => ({
   },
   icon: {
     marginRight: theme.spacing.unit * 2,
+  },
+  heroUnit: {
+    backgroundColor: theme.palette.background.paper,
   },
   heroContent: {
     maxWidth: 600,
@@ -57,7 +64,7 @@ const styles = theme => ({
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
-function MyReusmes(props) {
+function SearchResults(props) {
   const { classes } = props;
 
   return (
@@ -68,34 +75,20 @@ function MyReusmes(props) {
         <div className={classes.heroUnit}>
           <div className={classes.heroContent}>
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-              Your Resumes
+              Search Results
             </Typography>
             <Typography variant="h6" align="center" color="textSecondary" paragraph>
-              Use the space below to organize your personalized resumes
+              Your results should display below, click "View" for more information
+              entirely.
             </Typography>
-            <div className={classes.heroButtons}>
-              <Grid container spacing={16} justify="center">
-                <Grid item>
-                  <Button disabled variant="contained" color="primary">
-                    Upload a resume here
-                  </Button>
-                </Grid>
-                <Grid item>
-                    <CopyPasteModal />
-                </Grid>
-              </Grid>
-            </div>
           </div>
         </div>
         <div className={classNames(classes.layout, classes.cardGrid)}>
           {/* End hero unit */}
           <Grid container spacing={40}>
             {cards.map(card => (
-              <Grid item key={card} sm={6} md={4}>
-                <Card className={classes.card}>
-                  <Resume />
-                  
-                </Card>
+              <Grid item key={card} xs={12} sm={12} md={12} lg={12}>
+                <Card />
               </Grid>
             ))}
           </Grid>
@@ -105,8 +98,8 @@ function MyReusmes(props) {
   );
 }
 
-MyReusmes.propTypes = {
+SearchResults.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(MyReusmes);
+export default withStyles(styles)(SearchResults);
