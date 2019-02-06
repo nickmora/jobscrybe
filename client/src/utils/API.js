@@ -19,6 +19,10 @@ export default {
     saveJob: function(jobData) {
       return axios.post("/api/jobs", jobData);
     },
+    addResume: function(data){
+      console.log(data)
+      return axios.post("/api/saveResume", data);
+    },
 //   // Gets all books
 //   getBooks: function() {
 //     return axios.get("/api/books");
