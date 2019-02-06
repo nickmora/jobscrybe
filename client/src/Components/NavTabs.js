@@ -9,6 +9,7 @@ import SearchPage from "../pages/Search"
 import {Link} from 'react-router-dom';
 import ResumesPage from "../pages/MyResumes"
 import NavBar from "./NavBar"
+import Logout from '../pages/Logout';
 
 function TabContainer(props) {
   return (
@@ -59,7 +60,7 @@ class NavTabs extends React.Component {
           {value === 1 && <TabContainer> <ResumesPage /></TabContainer>}
           {value === 2 && <TabContainer>Page Three</TabContainer>}
           {value === 3 && <TabContainer>Saved Jobs</TabContainer>}
-          {value === 4 && <TabContainer>See ya!</TabContainer>}
+          {value === 4 && <TabContainer><Logout /></TabContainer>}
         </div>
     );
   }

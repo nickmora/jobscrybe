@@ -4,9 +4,12 @@ import API from "../utils/API";
 class Logout extends Component {
     handleLogout= function(){
         API.logout()
-        .then(
-            console.log("here we are in logout")
-        )
+        .then( resp=>{
+            if(resp.status===200){
+                console.log("success")
+                // this.props.history.push("/")
+            }
+        })
     }
 
     componentDidMount(){

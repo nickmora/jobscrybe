@@ -31,7 +31,8 @@ const router = require("express").Router();
 // // const router = require("express").Router();
 // const resumeRoutes = require("./api/resumeSaved");
 
-const resumeController = require("../controllers/resumecontroller")
+const resumeController = require("../controllers/resumecontroller");
+const userController = require("../controllers/userController")
 
 const db = require("../models");
 
@@ -53,11 +54,32 @@ module.exports=function(app, passport){
 
 
     app.post("/api/login/",
-        passport.authenticate("local-login", {
-            successRedirect: "/main",
-            failureReditrect: "/login"
-        })
-    );
+    function(req, res, next) {
+        passport.authenticate("local-login", function(err, user, info) {
+            console.log(user, "user")
+          if (err) { return next(err); }
+          if (!user) { return res.redirect('/login'); }
+          req.logIn(user, function(err) {
+            if (err) { return next(err); }
+            console.log(user._id, "CHICICHICHIHCIHCIHCIHICHI")
+            return res.json(user);
+          });
+        })(req, res, next);
+        // passport.authenticate("local-login", {
+        //     successRedirect: "/main",
+        //     failureReditrect: "/login"
+        // })
+    });
+
+    app.get("/users/:id", (req, res)=>{
+        console.log(req.params.id, "index")
+        // userController.findById(req.params.id)
+
+        // .then(response=>{
+        //     console.log("Victory")
+        //     // res.json(response)
+        // })
+    })
 
     app.get('/logout', function(req, res) {
 		req.logout();
@@ -67,7 +89,7 @@ module.exports=function(app, passport){
 };
 
 function isLoggedIn(req, res, next) {
-    console.log(req)
+    console.log(req.params, "end!")
 	// if user is authenticated in the session, carry on
 	if (req.isAuthenticated())
 		return next();
