@@ -87,7 +87,7 @@ class SignUp extends React.Component{
       .then(resp=>{
         console.log(resp)
         if(resp.status===200){
-          this.props.history.push("/main")
+          this.props.history.push("/")
         }
         // window.location.href = "/main" 
       })

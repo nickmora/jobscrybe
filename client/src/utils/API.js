@@ -23,6 +23,9 @@ export default {
       console.log(data)
       return axios.post("/api/saveResume", data);
     },
+    logout: function(){
+      return axios.get("/logout");
+    },
 //   // Gets all books
 //   getBooks: function() {
 //     return axios.get("/api/books");
