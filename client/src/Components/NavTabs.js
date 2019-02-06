@@ -6,6 +6,7 @@ import Tabs from '@material-ui/core/Tabs';
 import NoSsr from '@material-ui/core/NoSsr';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
+import SearchPage from "../pages/Search"
 
 function TabContainer(props) {
   return (
@@ -26,7 +27,6 @@ function LinkTab(props) {
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
   },
 });
 
@@ -44,24 +44,20 @@ class NavTabs extends React.Component {
     const { value } = this.state;
 
     return (
-      <NoSsr>
-        <div className={classes.root}>
-          <AppBar position="static">
+        <div className={classes}>
             <Tabs variant="fullWidth" value={value} onChange={this.handleChange}>
               <LinkTab label="Search" href="../pages/Search" />
               <LinkTab label="My Resumes" href="page2" />
               <LinkTab label="Edit Profile" href="page3" />
-              <LinkTab label="Saved Jobs" href="page4" />
+              <LinkTab label="Edit Profile" href="page4" />
               <LinkTab label="Logout" href="page5" />
             </Tabs>
-          </AppBar>
-          {value === 0 && <TabContainer>Page One</TabContainer>}
-          {value === 1 && <TabContainer>Page Two</TabContainer>}
+          {/* {value === 0 && <TabContainer><SearchPage /></TabContainer>} */}
+          {/* {value === 1 && <TabContainer>Page Two</TabContainer>}
           {value === 2 && <TabContainer>Page Three</TabContainer>}
           {value === 3 && <TabContainer>Saved Jobs</TabContainer>}
-          {value === 4 && <TabContainer>See ya!</TabContainer>}
+          {value === 4 && <TabContainer>See ya!</TabContainer>} */}
         </div>
-      </NoSsr>
     );
   }
 }

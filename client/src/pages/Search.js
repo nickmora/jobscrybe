@@ -24,7 +24,7 @@ class Search extends React.Component{
             <Fragment>
 
             {/* <NavBar /> */}
-            <Grid container spacing={24} >
+            <Grid container spacing={24}>
                 <Grid item xs={12}>
                     <Paper className={"Jumbo"}>
                         S E A R C H
