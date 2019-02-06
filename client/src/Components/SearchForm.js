@@ -1,6 +1,5 @@
 import React, { Fragment } from "react"
 import { withStyles, InputLabel } from "@material-ui/core";
-import TextField from "@material-ui/core/TextField";
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import FormControl from "@material-ui/core/FormControl"

@@ -1,11 +1,8 @@
 import React, { Fragment } from "react";
-import NavBar from "../Components/NavBar";
 import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core";
 import SearchForm from "../Components/SearchForm";
-import classNames from "classnames"
 
 
 const styles = theme =>({

@@ -18,6 +18,7 @@ export default {
       return axios.post("/api/books", jobData);
     },
     addResume: function(data){
+      console.log(data)
       return axios.post("/api/saveResume", data);
     },
 //   // Gets all books

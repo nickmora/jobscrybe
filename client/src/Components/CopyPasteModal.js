@@ -42,7 +42,7 @@ class CopyPasteModal extends React.Component {
 
   handleSubmit = event=>{
     event.preventDefault();
-    if(!this.resumeBody){
+    if(!this.state.resumeBody){
       alert("You can't save a blank resume!");
     } else{
       API.addResume({
@@ -60,8 +60,10 @@ class CopyPasteModal extends React.Component {
 
       .catch(err=>console.log(err));
       this.setState({
-        email:"",
-        password:"",
+        description:"",
+        title:"",
+        resumeBody:"",
+        resumeBody:"",
       })
     }
   }

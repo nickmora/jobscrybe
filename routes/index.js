@@ -41,8 +41,9 @@ module.exports=function(app, passport){
         res.json(req.user)
     })
 
-    app.post("/api/saveResume/", isLoggedIn, (req, res)=>{
-        resumeController.create(req)
+    app.post("/api/saveResume", (req, res)=>{
+        // console.log(req.body)
+        resumeController.create(req.body)
     })
 
     app.post("/api/signup/", passport.authenticate("local-signup", {
@@ -66,7 +67,7 @@ module.exports=function(app, passport){
 };
 
 function isLoggedIn(req, res, next) {
-
+    console.log(req)
 	// if user is authenticated in the session, carry on
 	if (req.isAuthenticated())
 		return next();

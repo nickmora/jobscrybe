@@ -65,8 +65,8 @@ class NavTabs extends React.Component {
   }
 }
 
-NavTabs.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
+// NavTabs.propTypes = {
+//   classes: PropTypes.object.isRequired,
+// };
 
 export default (NavTabs);
