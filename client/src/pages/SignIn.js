@@ -73,13 +73,16 @@ class SignIn extends React.Component{
         password:this.state.password
       })
       .then((resp)=>{
+        console.log(resp)
+        // if(resp.status===200){
+        //   // this.props.history.push("/main")
+        // }
         this.setState({
           email:"",
           password:"",
+          user: resp.data._id
         });
-        if(resp.status===200){
-          this.props.history.push("/main")
-        }
+        console.log(this.state.user)
       })
     }
   }
