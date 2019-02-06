@@ -9,7 +9,6 @@ import SignUp from "./pages/SignUp"
 import Search from "./pages/Search"
 import MyResumes from "./pages/MyResumes"
 
-
 class App extends Component {
   render() {
     return (

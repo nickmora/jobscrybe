@@ -3,7 +3,9 @@ import axios from "axios";
 export default {
     // Gets jobs from the Github API
     getJobs: function(q, loc) {
-      return axios.get("/api/github", { params: { q: "search:" + q, loc: "location:" + loc } });
+      // console.log(q);
+      // console.log(loc);
+      return axios.get(`http://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?description=${q.search}&location=${q.location}`).then(data=>{console.log(data)});
     },
     // Gets all saved jobs
     getSavedJobs: function() {
@@ -14,12 +16,8 @@ export default {
       return axios.delete("/api/jobs/" + id);
     },
     // Saves a job to the database
-    saveBook: function(jobData) {
-      return axios.post("/api/books", jobData);
-    },
-    addResume: function(data){
-      console.log(data)
-      return axios.post("/api/saveResume", data);
+    saveJob: function(jobData) {
+      return axios.post("/api/jobs", jobData);
     },
 //   // Gets all books
 //   getBooks: function() {
