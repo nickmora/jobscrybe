@@ -56,7 +56,7 @@ class SearchForm extends React.Component{
         
         return (
             <Fragment>
-                <Grid container md spacing={8} justify="flex-end">
+                <Grid container spacing={8} justify="flex-end">
                     <Grid item xs={8}>
                         <FormControl fullWidth margin="normal">
                             <InputLabel htmlFor="search">Keywords</InputLabel>

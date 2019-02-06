@@ -29,7 +29,9 @@ const router = require("express").Router();
 
 
 // // const router = require("express").Router();
-// // const resumeRoutes = require("./api/resumeSaved");
+// const resumeRoutes = require("./api/resumeSaved");
+
+const resumeController = require("../controllers/resumecontroller")
 
 const db = require("../models");
 
@@ -37,6 +39,10 @@ module.exports=function(app, passport){
     app.get("/main", isLoggedIn, (req,res)=>{
         console.log("this is where I should be redirecting the url")
         res.json(req.user)
+    })
+
+    app.post("/api/saveResume/", isLoggedIn, (req, res)=>{
+        resumeController.create(req)
     })
 
     app.post("/api/signup/", passport.authenticate("local-signup", {
