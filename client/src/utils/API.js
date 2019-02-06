@@ -5,7 +5,7 @@ export default {
     getJobs: function(q, loc) {
       // console.log(q);
       // console.log(loc);
-      return axios.get(`http://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?description=${q.search}&location=${q.location}`).then(data=>{console.log(data)});
+      return axios.get(`http://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?description=${q.search}&location=${q.location}`);
     },
     // Gets all saved jobs
     getSavedJobs: function() {
