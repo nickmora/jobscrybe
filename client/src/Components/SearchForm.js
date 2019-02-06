@@ -56,22 +56,21 @@ class SearchForm extends React.Component{
         
         return (
             <Fragment>
-                <Grid container spacing={24}>
-                    <Grid item xs={6}>
-                        <FormControl margin="normal">
+                <Grid container md spacing={8} justify="flex-end">
+                    <Grid item xs={8}>
+                        <FormControl fullWidth margin="normal">
                             <InputLabel htmlFor="search">Keywords</InputLabel>
                             <Input value={this.state.search} onChange={this.handleChange} id="search" name="search" autoFocus />
                         </FormControl>
                     </Grid>
-                    <Grid item xs={6}>
-                        <FormControl margin="normal" style={{flex:1}}>
+                    <Grid item xs={4}>
+                        <FormControl fullWidth margin="normal">
                             <InputLabel htmlFor="location"> Location (optional)</InputLabel>
                             <Input value={this.state.location} onChange={this.handleChange} id="location" name="location"/>
                         </FormControl>
                     </Grid>
                     
                     <Grid item xs={3}>
-
                         <Button
                             onClick={this.handleSubmit}
                             type="submit"
