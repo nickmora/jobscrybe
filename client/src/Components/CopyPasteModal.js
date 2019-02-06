@@ -42,26 +42,29 @@ class CopyPasteModal extends React.Component {
 
   handleSubmit = event=>{
     event.preventDefault();
-    if(!this.resumeBody){
+    if(!this.state.resumeBody){
       alert("You can't save a blank resume!");
     } else{
       API.addResume({
         title: this.state.title, 
         description:this.state.description,
-        resumeBody: this.state.resumeBody,
+        body: this.state.resumeBody,
+        user: "default",
+        date: Date.now
       })
       .then(resp=>{
         console.log(resp)
         if(resp.status===200){
-          this.props.history.push("/main")
+            console.log("resume added!")
+        //   this.props.history.push("/main")
         }
-        // window.location.href = "/main" 
       })
 
       .catch(err=>console.log(err));
       this.setState({
-        email:"",
-        password:"",
+        description:"",
+        title:"",
+        resumeBody:"",
       })
     }
   }
@@ -75,14 +78,8 @@ class CopyPasteModal extends React.Component {
   };
 
   handleInputChange = event => {
-    // Getting the value and name of the input which triggered the change
     let value = event.target.value;
     const name = event.target.name;
-
-    if (name === "password") {
-      value = value.substring(0, 15);
-    }
-    // Updating the input's state
     this.setState({
       [name]: value
     });

@@ -29,7 +29,9 @@ const router = require("express").Router();
 
 
 // // const router = require("express").Router();
-// // const resumeRoutes = require("./api/resumeSaved");
+// const resumeRoutes = require("./api/resumeSaved");
+
+const resumeController = require("../controllers/resumecontroller")
 
 const db = require("../models");
 
@@ -37,6 +39,11 @@ module.exports=function(app, passport){
     app.get("/main", isLoggedIn, (req,res)=>{
         console.log("this is where I should be redirecting the url")
         res.json(req.user)
+    })
+
+    app.post("/api/saveResume", (req, res)=>{
+        // console.log(req.body)
+        resumeController.create(req.body)
     })
 
     app.post("/api/signup/", passport.authenticate("local-signup", {
@@ -60,7 +67,7 @@ module.exports=function(app, passport){
 };
 
 function isLoggedIn(req, res, next) {
-
+    console.log(req)
 	// if user is authenticated in the session, carry on
 	if (req.isAuthenticated())
 		return next();
