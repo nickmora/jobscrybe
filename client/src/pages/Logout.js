@@ -9,7 +9,9 @@ class Logout extends Component {
         )
     }
 
-    // ComponentDidMount()
+    componentDidMount(){
+        this.handleLogout();
+    }
 
     render(){
         return (
