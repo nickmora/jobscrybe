@@ -36,7 +36,7 @@ class Search extends React.Component{
               Search
             </Typography>
             <Typography variant="h6" align="center" color="textSecondary" paragraph>
-              Use the space below to organize your personalized resumes
+              Look for jobs in your area
             </Typography>
           </div>
         </div>
