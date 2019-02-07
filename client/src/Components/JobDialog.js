@@ -14,6 +14,8 @@ import Select from '@material-ui/core/Select';
 import Switch from '@material-ui/core/Switch';
 import SaveButton from "./SaveButton"
 import API from '../utils/API';
+import ResumeMenu from './ResumeMenu';
+import { Grid } from '@material-ui/core';
 
 
 class MaxWidthDialog extends React.Component {
@@ -56,13 +58,26 @@ class MaxWidthDialog extends React.Component {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <SaveButton user = {this.props.user} jobInfo = {this.props.jobInfo} />
-            <Button onClick={this.handleClose} color="primary">
-              Jobify!
-            </Button>
-            <Button onClick={this.handleClose} color="primary">
-              Close
-            </Button>
+            <Grid container spacing={8}>
+              <Grid item sm={6}>
+                <ResumeMenu user={this.props.user} />
+              </Grid>
+
+              <Grid item sm={2}>
+                <Button onClick={this.handleClose} color="primary">
+                  Jobify!
+                </Button>
+              </Grid>
+
+              <Grid item sm={2}>
+                <SaveButton user = {this.props.user} jobInfo = {this.props.jobInfo} />
+              </Grid>
+              <Grid item sm={2}>
+                <Button onClick={this.handleClose} color="primary">
+                  Close
+                </Button>
+              </Grid>
+            </Grid>
           </DialogActions>
         </Dialog>
       </React.Fragment>

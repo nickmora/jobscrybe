@@ -27,7 +27,7 @@ export default {
     logout: function(){
       return axios.get("/logout");
     },
-//   // Gets all books
+
     getResumes: function(user) {
       return axios.get("/api/resume/" + user);
     },
