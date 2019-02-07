@@ -14,6 +14,7 @@ import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import {Link} from 'react-router-dom';
 import API from "../utils/API"
+import SignUpModal from '../Components/SignUpModal';
 
 const styles = theme => ({
   main: {
@@ -131,7 +132,7 @@ class SignIn extends React.Component{
             Sign in
           </Button>
         </form>
-      <p>No account? Sign up <Link to="/SignUp">here</Link></p>
+      <p>No account? Sign up <SignUpModal /> </p>
       </Paper>
     </main>
     )

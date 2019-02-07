@@ -48,8 +48,9 @@ module.exports=function(app, passport){
     })
 
     app.post("/api/signup/", passport.authenticate("local-signup", {
-        successRedirect:"/api/login/",
+        successRedirect:"/",
         failureReditrect:"/signup"
+
     }));
 
 
