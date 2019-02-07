@@ -15,7 +15,7 @@ const styles = {
 
 class SimpleAppBar extends React.Component{
   componentDidMount(){
-    console.log(this.state)
+    // console.log(this.state)
   }
   render(){
     const { classes } = this.props;

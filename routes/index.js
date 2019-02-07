@@ -78,14 +78,23 @@ module.exports=function(app, passport){
         db.Resume
             .find({})
             .then(results=>{
-                console.log(results)
+                // console.log(results)
                 res.json(results);
             })
     })
 
     app.post("/api/jobs/:id", (req, res)=>{
         console.log(req.body);
-        db.Job.create(req.body.jobInfo).then(resp=>{console.log(resp, "yeah!")});
+        db.Job.create(req.body.jobInfo);
+    });
+
+    app.get("/api/jobs/", (req, res)=>{
+        db.Job
+            .find({})
+            .then(results=>{
+                // console.log(results);
+                res.json(results)
+            })
     })
 
 };

@@ -98,8 +98,6 @@ class SearchResults extends React.Component{
             {this.props.jobs.map(card => (
               <Grid item key={card} xs={12} sm={12} md={12} lg={12}>
                 <JobCard
-                  title={card.title}
-                  location={card.location}
                   jobInfo={card}
                 />
               </Grid>

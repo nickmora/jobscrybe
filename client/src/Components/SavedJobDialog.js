@@ -12,14 +12,12 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import Switch from '@material-ui/core/Switch';
-import SaveButton from "./SaveButton"
-import API from '../utils/API';
+import UnaveButton from "./UnsaveButton"
 
 
 class MaxWidthDialog extends React.Component {
   state = {
     open: false,
-    user: this.props.user
   };
 
   handleClickOpen = () => {
@@ -29,8 +27,6 @@ class MaxWidthDialog extends React.Component {
   handleClose = () => {
     this.setState({ open: false });
   };
-
-
 
   render() {
     const { classes } = this.props;
@@ -48,15 +44,18 @@ class MaxWidthDialog extends React.Component {
           aria-labelledby="max-width-dialog-title"
         >
           <DialogTitle id="max-width-dialog-title">
-            {this.props.jobInfo.title}
+            title
           </DialogTitle>
           <DialogContent>
             <DialogContentText>
-            <div className="content" dangerouslySetInnerHTML={{__html: this.props.jobInfo.description}}></div>
+              content/job description
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <SaveButton user = {this.props.user} jobInfo = {this.props.jobInfo} />
+            <UnsaveButton 
+                // user = {this.props.user} jobInfo = {this.props.jobInfo}
+            
+             />
             <Button onClick={this.handleClose} color="primary">
               Jobify!
             </Button>

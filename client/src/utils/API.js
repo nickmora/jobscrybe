@@ -31,6 +31,11 @@ export default {
     getResumes: function(user) {
       return axios.get("/api/resume/" + user);
     },
+
+    getSavedJobs: function(){
+      console.log("hello from API")
+      return axios.get("/api/jobs")
+    },
 //   // Gets the book with the given id
 //   getBook: function(id) {
 //     return axios.get("/api/books/" + id);
