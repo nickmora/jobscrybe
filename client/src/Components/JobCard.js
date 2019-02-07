@@ -6,27 +6,27 @@ import CardActions from "@material-ui/core/CardActions";
 import Button from "@material-ui/core/Button"
 
 class JobCard extends React.Component{
-
     render(){
+        const { classes } = this.props;
         return(
 
             
             
-            <Card className={classes.card}>
-    <CardContent className={classes.cardContent}>
-    <Typography gutterBottom variant="h5" component="h2">
-    Job Heading
-    </Typography>
-    <Typography>
-    San Jose, CA, USA (94666)
-    </Typography>
-    </CardContent>
-    <CardActions>
-    <Button size="small" color="primary">
-    View
-    </Button>
+    <Card>
+        <CardContent>
+            <Typography gutterBottom variant="h5" component="h2">
+                {this.props.title}
+            </Typography>
+            <Typography>
+                {this.props.location}
+            </Typography>
+        </CardContent>
+        <CardActions>
+            <Button size="small" color="primary">
+                View
+            </Button>
     
-    </CardActions>
+        </CardActions>
     </Card>
 )
 }

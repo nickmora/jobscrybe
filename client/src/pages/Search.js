@@ -3,6 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core";
 import SearchForm from "../Components/SearchForm";
+import SearchResults from "../pages/SearchResults"
 
 
 const styles = theme =>({
@@ -25,6 +26,24 @@ const styles = theme =>({
 
 class Search extends React.Component{
     
+    
+    state = {
+        jobs: []
+    }
+    
+    resetState = ()=>{
+        this.setState({jobs:[]})
+    }
+    
+    componentDidMount(){
+        this.resetState();
+    }
+    
+    grabJobs = searchResponse=>{
+        this.setState({jobs:searchResponse})
+        console.log(this.state.jobs)
+    }
+
     render(){
         const {classes} = this.props
         return(
@@ -42,7 +61,7 @@ class Search extends React.Component{
         </div>
 
                 <Grid item xs={12}>
-                    <SearchForm />
+                {this.state.jobs.length ? (<SearchResults jobs={this.state.jobs} />) : (<SearchForm grabJobs={this.grabJobs} />)}
                 </Grid>
 
             </Grid>
