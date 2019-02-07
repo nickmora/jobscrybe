@@ -4,6 +4,8 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import CardActions from "@material-ui/core/CardActions";
 import Button from "@material-ui/core/Button"
+import JobSearchModal from "./JobSearchModal"
+import JobDialog from "./JobDialog";
 
 class JobCard extends React.Component{
     render(){
@@ -22,9 +24,7 @@ class JobCard extends React.Component{
             </Typography>
         </CardContent>
         <CardActions>
-            <Button size="small" color="primary">
-                View
-            </Button>
+                <JobDialog jobInfo={this.props.jobInfo} />
     
         </CardActions>
     </Card>
