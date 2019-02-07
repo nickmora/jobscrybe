@@ -83,6 +83,11 @@ module.exports=function(app, passport){
             })
     })
 
+    app.post("/api/jobs/:id", (req, res)=>{
+        console.log(req.body);
+        db.Job.create(req.body.jobInfo).then(resp=>{console.log(resp, "yeah!")});
+    })
+
 };
 
 function isLoggedIn(req, res, next) {

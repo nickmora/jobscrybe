@@ -18,7 +18,7 @@ export default {
     },
     // Saves a job to the database
     saveJob: function(jobData) {
-      return axios.post("/api/jobs", jobData);
+      return axios.post(`/api/jobs/${jobData.user}`, jobData);
     },
     addResume: function(data){
       console.log(data)
