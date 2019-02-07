@@ -48,7 +48,7 @@ module.exports=function(app, passport){
     })
 
     app.post("/api/signup/", passport.authenticate("local-signup", {
-        successRedirect:"/main",
+        successRedirect:"/api/login/",
         failureReditrect:"/signup"
     }));
 
@@ -61,35 +61,31 @@ module.exports=function(app, passport){
           if (!user) { return res.redirect('/login'); }
           req.logIn(user, function(err) {
             if (err) { return next(err); }
-            console.log(user._id, "CHICICHICHIHCIHCIHCIHICHI")
+            // console.log(user._id, "CHICICHICHIHCIHCIHCIHICHI")
             return res.json(user);
           });
         })(req, res, next);
-        // passport.authenticate("local-login", {
-        //     successRedirect: "/main",
-        //     failureReditrect: "/login"
-        // })
     });
 
-    app.get("/users/:id", (req, res)=>{
-        console.log(req.params.id, "index")
-        // userController.findById(req.params.id)
-
-        // .then(response=>{
-        //     console.log("Victory")
-        //     // res.json(response)
-        // })
-    })
 
     app.get('/logout', function(req, res) {
 		req.logout();
 		res.redirect('/');
     });
 
+    app.get("/api/resume/:id", (req, res)=>{
+        console.log(req.params.id)
+        db.Resume
+            .find({})
+            .then(results=>{
+                console.log(results)
+                res.json(results);
+            })
+    })
+
 };
 
 function isLoggedIn(req, res, next) {
-    console.log(req.params, "end!")
 	// if user is authenticated in the session, carry on
 	if (req.isAuthenticated())
 		return next();
