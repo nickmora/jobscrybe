@@ -60,12 +60,12 @@ class ResumeCard extends React.Component {
               <MoreVertIcon />
             </IconButton>
           }
-          title="Example Resume Title"
-          subheader="September 14, 2016"
+          title={this.props.title}
+          subheader={this.props.date}
         />
         <CardContent>
           <Typography component="p">
-            Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia?
+            {this.props.description}
           </Typography>
         </CardContent>
         <CardActions className={classes.actions} disableActionSpacing>
@@ -93,7 +93,9 @@ class ResumeCard extends React.Component {
         </CardActions>
         <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            <Typography paragraph>Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium. Qui animated corpse, cricket bat max brucks terribilem incessu zomby. The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus. Zonbi tattered for solum oculi eorum defunctis go lum cerebro. Nescio brains an Undead zombies. Sicut malus putrid voodoo horror. Nigh tofth eliv ingdead.</Typography>
+            <Typography paragraph>
+            {this.props.body}
+            </Typography>
 
           </CardContent>
         </Collapse>

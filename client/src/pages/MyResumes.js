@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import CopyPasteModal from "../Components/CopyPasteModal";
 import Resume from "../Components/ResumeCard"
+import API from '../utils/API';
 
 const styles = theme => ({
   appBar: {
@@ -55,10 +56,20 @@ const styles = theme => ({
   },
 });
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 class MyReusmes extends React.Component{
+
+  state={
+    resumes:[]
+  }
   
+  componentDidMount(){
+    API.getResumes(this.props.user)
+      .then(resp=>{
+        this.setState({resumes: resp.data})
+        console.log(this.state)
+      })
+  }
 
   render(){
     const { classes } = this.props;
@@ -91,15 +102,28 @@ class MyReusmes extends React.Component{
         </div>
         <div className={classNames(classes.layout, classes.cardGrid)}>
           {/* End hero unit */}
-          <Grid container spacing={40}>
-            {cards.map(card => (
+          <Grid container spacing={40} >
+          {this.state.resumes.length ? 
+            (this.state.resumes.map(card => (
               <Grid item key={card} sm={6} md={4}>
-                <Card className={classes.card}>
-                  <Resume />
+                {console.log(card)}
+                  <Resume 
+                    title={card.title} 
+                    description={card.description}
+                    body={card.body}
+                    date={card.date}
+                  />
                   
-                </Card>
+                  
               </Grid>
-            ))}
+            ))) : 
+            (<Grid item>
+              <Typography variant="h4" color="inherit">
+                No resumes to be found, upload one above to get started
+              </Typography>
+            </Grid>)
+          
+        }
           </Grid>
         </div>
       </main>

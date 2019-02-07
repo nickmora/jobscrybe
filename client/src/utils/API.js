@@ -27,9 +27,9 @@ export default {
       return axios.get("/logout");
     },
 //   // Gets all books
-//   getBooks: function() {
-//     return axios.get("/api/books");
-//   },
+    getResumes: function(user) {
+      return axios.get("/api/resume/" + user);
+    },
 //   // Gets the book with the given id
 //   getBook: function(id) {
 //     return axios.get("/api/books/" + id);
