@@ -3,7 +3,11 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core";
 import SearchForm from "../Components/SearchForm";
+
+import jobSearchModal from "../Components/jobSearchModal";
+
 import SearchResults from "../pages/SearchResults"
+
 
 
 const styles = theme =>({
@@ -54,6 +58,9 @@ class Search extends React.Component{
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
               Search
             </Typography>
+            
+            
+        
             <Typography variant="h6" align="center" color="textSecondary" paragraph>
               Look for jobs in your area
             </Typography>
@@ -63,9 +70,12 @@ class Search extends React.Component{
                 <Grid item xs={12}>
                 {this.state.jobs.length ? (<SearchResults jobs={this.state.jobs} />) : (<SearchForm grabJobs={this.grabJobs} />)}
                 </Grid>
-
+                <Grid item>
+                <jobSearchModal />
+                </Grid>
             </Grid>
             </Fragment>
+            
         )
     }
 }
