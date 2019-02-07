@@ -64,12 +64,17 @@ class MyReusmes extends React.Component{
   }
   
   componentDidMount(){
-    API.getResumes(this.props.user)
-      .then(resp=>{
-        this.setState({resumes: resp.data})
-        console.log(this.state)
-      })
+    this.getResumes();
   }
+
+  getResumes= ()=>{
+    API.getResumes(this.props.user)
+    .then(resp=>{
+      this.setState({resumes: resp.data})
+    })
+  }
+
+
 
   render(){
     const { classes } = this.props;
@@ -94,7 +99,7 @@ class MyReusmes extends React.Component{
                   </Button>
                 </Grid>
                 <Grid item>
-                    <CopyPasteModal user = {this.props.user } />
+                    <CopyPasteModal user = {this.props.user } reloadResumes={this.getResumes} />
                 </Grid>
               </Grid>
             </div>
