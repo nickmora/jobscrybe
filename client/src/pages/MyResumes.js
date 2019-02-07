@@ -111,7 +111,7 @@ class MyReusmes extends React.Component{
           {this.state.resumes.length ? 
             (this.state.resumes.map(card => (
               <Grid item key={card} sm={6} md={4}>
-                {console.log(card)}
+                {/* {console.log(card)} */}
                   <Resume 
                     title={card.title} 
                     description={card.description}

@@ -97,6 +97,10 @@ module.exports=function(app, passport){
             })
     })
 
+    app.post("/api/algo/", (req, res)=>{
+        console.log(req.body)
+    })
+
 };
 
 function isLoggedIn(req, res, next) {

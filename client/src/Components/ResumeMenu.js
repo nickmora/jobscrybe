@@ -11,6 +11,8 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import API from '../utils/API';
+import Grid from "@material-ui/core/Grid"
+import Button from "@material-ui/core/Button"
 
 const styles = theme => ({
   root: {
@@ -28,14 +30,33 @@ const styles = theme => ({
 
 class SimpleSelect extends React.Component {
   state = {
+    selected:{},
     resumes: [],
   };
+
+  
+  calculateAlgo = (obj) =>{
+    API.calculateAlgo(obj).then(resp=>{
+      console.log(resp)
+
+      //this is where the algorithm will return its calculations
+    })
+  }
+
+  handleSubmit = event=>{
+    event.preventDefault();
+    console.log(this.state.selected)
+    if(!this.state.selected){
+      alert("You gotta select a resume, hoss");
+    }
+    else this.calculateAlgo(this.state)
+  }
+
 
   
   getResumes = (user)=>{
     API.getResumes(user).then(resp=>{
       this.setState({resumes:resp.data})
-      console.log(this.state.resumes)
     })
   }
 
@@ -45,6 +66,8 @@ class SimpleSelect extends React.Component {
   
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
+    this.setState({hold: event.target.value})
+    console.log(this.state.hold)
   };
 
   render() {
@@ -52,23 +75,37 @@ class SimpleSelect extends React.Component {
 
     return (
       <form className={classes.root} autoComplete="off">
+
+      <Grid container>
+
+
+        <Grid item sm={9}>
+
         <FormControl fullWidth className={classes.formControl}>
-          <InputLabel htmlFor="age-simple">Resume</InputLabel>
+          <InputLabel htmlFor="selected">Resume</InputLabel>
           <Select
-            value={this.state.resumes}
+            value={this.state.selected}
             onChange={this.handleChange}
             inputProps={{
-              name: 'age',
-              id: 'age-simple',
+              name: 'selected',
+              id: 'resume',
             }}
-          >
+            >
             {this.state.resumes.map(item=>(
-              <MenuItem value={item.title}>
+              <MenuItem value={item}>
                 {item.title}
               </MenuItem>
             ))}
           </Select>
         </FormControl>
+        </Grid>
+        <Grid item sm={2}>
+                <Button onClick={this.calculateAlgo} color="primary">
+                  Jobify!
+                </Button>
+        </Grid>
+
+      </Grid>
       </form>
     );
   }

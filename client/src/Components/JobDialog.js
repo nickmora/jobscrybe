@@ -24,6 +24,10 @@ class MaxWidthDialog extends React.Component {
     user: this.props.user
   };
 
+  grabResume = (value) =>{
+    this.setState({resume:value})
+  }
+
   handleClickOpen = () => {
     this.setState({ open: true });
   };
@@ -31,6 +35,8 @@ class MaxWidthDialog extends React.Component {
   handleClose = () => {
     this.setState({ open: false });
   };
+
+
 
 
 
@@ -59,14 +65,8 @@ class MaxWidthDialog extends React.Component {
           </DialogContent>
           <DialogActions>
             <Grid container spacing={8}>
-              <Grid item sm={6}>
-                <ResumeMenu user={this.props.user} />
-              </Grid>
-
-              <Grid item sm={2}>
-                <Button onClick={this.handleClose} color="primary">
-                  Jobify!
-                </Button>
+              <Grid item sm={8}>
+                <ResumeMenu user={this.props.user} jobInfo={this.props.jobInfo} grabResume={this.grabResume} />
               </Grid>
 
               <Grid item sm={2}>

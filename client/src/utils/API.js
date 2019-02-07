@@ -36,6 +36,10 @@ export default {
       console.log("hello from API")
       return axios.get("/api/jobs")
     },
+
+    calculateAlgo: function(data){
+      return axios.post("/api/algo/", data)
+    },
 //   // Gets the book with the given id
 //   getBook: function(id) {
 //     return axios.get("/api/books/" + id);
