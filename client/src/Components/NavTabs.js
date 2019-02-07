@@ -57,10 +57,10 @@ class NavTabs extends React.Component {
               <LinkTab label="Logout" href="Logout" />
             </Tabs>
           {value === 0 && <TabContainer> <SearchPage /></TabContainer>}
-          {value === 1 && <TabContainer> <ResumesPage /></TabContainer>}
+          {value === 1 && <TabContainer> <ResumesPage user = {this.props.user} /></TabContainer>}
           {value === 2 && <TabContainer>Page Three</TabContainer>}
           {value === 3 && <TabContainer>Saved Jobs</TabContainer>}
-          {value === 4 && <TabContainer><Logout /></TabContainer>}
+          {value === 4 && <TabContainer><Logout logoutHandler={this.props.logoutHandler} /></TabContainer>}
         </div>
     );
   }

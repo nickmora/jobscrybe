@@ -2,10 +2,11 @@ import axios from "axios";
 
 export default {
     // Gets jobs from the Github API
-    getJobs: function(q, loc) {
+    getJobs: function(q) {
       // console.log(q);
       // console.log(loc);
-      return axios.get(`http://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?description=${q.search}&location=${q.location}`).then(data=>{console.log(data)});
+      return (axios.get(`http://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?description=${q.search}&location=${q.location}`));
+
     },
     // Gets all saved jobs
     getSavedJobs: function() {
@@ -27,9 +28,9 @@ export default {
       return axios.get("/logout");
     },
 //   // Gets all books
-//   getBooks: function() {
-//     return axios.get("/api/books");
-//   },
+    getResumes: function(user) {
+      return axios.get("/api/resume/" + user);
+    },
 //   // Gets the book with the given id
 //   getBook: function(id) {
 //     return axios.get("/api/books/" + id);

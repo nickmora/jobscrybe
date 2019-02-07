@@ -51,15 +51,9 @@ class SignIn extends React.Component{
 
   state={
     email:"",
-    password:""
-  }
-
-  // loginUser = (email, pass)=>{
-  //   axios.post("/api/login", {
-  //     email: email,
-  //     password: pass,
-  //   }).then(data=> console.log(data))
-  // }
+    password:"",
+    user:""
+  };
 
   handleSubmit = event=>{
     event.preventDefault();
@@ -73,16 +67,15 @@ class SignIn extends React.Component{
         password:this.state.password
       })
       .then((resp)=>{
-        console.log(resp)
-        // if(resp.status===200){
-        //   // this.props.history.push("/main")
-        // }
+        // console.log(resp)
         this.setState({
           email:"",
           password:"",
           user: resp.data._id
         });
-        console.log(this.state.user)
+        this.props.getUser(this.state.user)
+        this.props.loginHandler();
+        // console.log(this.state.user)
       })
     }
   }
@@ -100,6 +93,7 @@ class SignIn extends React.Component{
       [name]: value
     });
   };
+  
 
   render(){
     const {classes} = this.props;

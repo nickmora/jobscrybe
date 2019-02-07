@@ -13,7 +13,11 @@ import Grid from '@material-ui/core/Grid';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
+
 import jobSearchModal from "../Components/jobSearchModal";
+
+import JobCard from "../Components/JobCard"
+
 
 const styles = theme => ({
   appBar: {
@@ -65,15 +69,16 @@ const styles = theme => ({
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
-function SearchResults(props) {
-  const { classes } = props;
+class SearchResults extends React.Component{
 
-  return (
-    <React.Fragment>
+  render(){
+    const { classes } = this.props;
+    return(
+      <React.Fragment>
       <CssBaseline />
       <main>
         {/* Hero unit */}
-        <div className={classes.heroUnit}>
+        {/* <div className={classes.heroUnit}>
           <div className={classes.heroContent}>
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
               Search Results
@@ -86,21 +91,33 @@ function SearchResults(props) {
             <jobSearchModal />
         </Grid>
           </div>
-        </div>
+        </div> */}
         <div className={classNames(classes.layout, classes.cardGrid)}>
           {/* End hero unit */}
           <Grid container spacing={40}>
-            {cards.map(card => (
+            {this.props.jobs.map(card => (
               <Grid item key={card} xs={12} sm={12} md={12} lg={12}>
-                <Card />
+                <JobCard
+                  title={card.title}
+                  location={card.location}
+                />
               </Grid>
             ))}
           </Grid>
         </div>
       </main>
     </React.Fragment>
-  );
+    )
+  }
 }
+
+
+  
+
+
+  
+
+
 
 SearchResults.propTypes = {
   classes: PropTypes.object.isRequired,

@@ -18,8 +18,11 @@ const styles = theme =>({
 class SearchForm extends React.Component{
     state={
         search:"",
-        location:""
+        location:"",
+        jobs:[]
     }
+
+
     handleChange = event => {
         // Getting the value and name of the input which triggered the change
         console.log(event.target.name)
@@ -40,19 +43,30 @@ class SearchForm extends React.Component{
         if (!this.state.search){
             alert("You gotta enter some keywords, hoss");
         } else{
+            // console.log(this.state)
             API.getJobs({
                 search: this.state.search,
                 location: this.state.location
             })
-            .then(resp=>{
-                console.log(resp)
+            .then(resp => {
+
+
+                // this.addJobs(resp.data)
+                console.log(resp.data)
+                // console.log(this.state)
+                this.setState({ jobs: resp.data });
+                this.props.grabJobs(this.state.jobs)
+
+                // console.log(this.state)
+            }).catch(err => {
+                console.log(err)
             })
         }
     }
 
+
     render() {
-        const { classes } = this.props;
-        
+        const classes = this.props
         return (
             <Fragment>
                 <Grid container spacing={8} justify="flex-end">

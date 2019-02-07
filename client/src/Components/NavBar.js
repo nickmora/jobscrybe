@@ -13,19 +13,25 @@ const styles = {
   },
 };
 
-function SimpleAppBar(props) {
-  const { classes } = props;
-
-  return (
-    <div className={classes.root}>
-      <AppBar position="static" color="default">
-        <Toolbar>
-            <NavTabs />
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
+class SimpleAppBar extends React.Component{
+  componentDidMount(){
+    console.log(this.state)
+  }
+  render(){
+    const { classes } = this.props;
+    return (
+      <div className={classes.root}>
+        <AppBar position="static" color="default">
+          <Toolbar>
+              <NavTabs logoutHandler={this.props.logoutHandler} user = {this.props.user } />
+          </Toolbar>
+        </AppBar>
+      </div>
+    );
+  }
 }
+
+
 
 SimpleAppBar.propTypes = {
   classes: PropTypes.object.isRequired,
