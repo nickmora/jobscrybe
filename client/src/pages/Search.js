@@ -4,7 +4,7 @@ import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core";
 import SearchForm from "../Components/SearchForm";
 
-import jobSearchModal from "../Components/jobSearchModal";
+import jobSearchModal from "../Components/JobSearchModal";
 
 import SearchResults from "../pages/SearchResults"
 
@@ -70,9 +70,7 @@ class Search extends React.Component{
                 <Grid item xs={12}>
                 {this.state.jobs.length ? (<SearchResults jobs={this.state.jobs} />) : (<SearchForm grabJobs={this.grabJobs} />)}
                 </Grid>
-                <Grid item>
-                <jobSearchModal />
-                </Grid>
+
             </Grid>
             </Fragment>
             
