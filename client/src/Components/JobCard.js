@@ -17,14 +17,14 @@ class JobCard extends React.Component{
     <Card>
         <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
-                {this.props.title}
+                {this.props.jobInfo.title}
             </Typography>
             <Typography>
-                {this.props.location}
+                {this.props.jobInfo.location}
             </Typography>
         </CardContent>
         <CardActions>
-                <JobDialog jobInfo={this.props.jobInfo} />
+                <JobDialog jobInfo={this.props.jobInfo} user={this.props.user} />
     
         </CardActions>
     </Card>

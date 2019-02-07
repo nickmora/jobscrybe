@@ -13,8 +13,6 @@ import Badge from '@material-ui/core/Badge';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import { mainListItems, secondaryListItems } from './ListItems';
-import SimpleTable from './SimpleTable';
 import NavBar from '../../Components/NavBar';
 import SignIn from '../SignIn';
 
@@ -106,7 +104,7 @@ class Dashboard extends React.Component {
 
   getUser = (userID)=>{
     this.setState({user: userID})
-    console.log(this.state)
+    // console.log(this.state)
   }
 
   changeLogin=()=>{
