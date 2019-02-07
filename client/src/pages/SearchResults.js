@@ -13,6 +13,7 @@ import Grid from '@material-ui/core/Grid';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
+import jobSearchModal from "../Components/jobSearchModal";
 
 const styles = theme => ({
   appBar: {
@@ -81,6 +82,9 @@ function SearchResults(props) {
               Your results should display below, click "View" for more information
               entirely.
             </Typography>
+            <Grid item>
+            <jobSearchModal />
+        </Grid>
           </div>
         </div>
         <div className={classNames(classes.layout, classes.cardGrid)}>
