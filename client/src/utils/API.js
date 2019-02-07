@@ -2,10 +2,11 @@ import axios from "axios";
 
 export default {
     // Gets jobs from the Github API
-    getJobs: function(q, loc) {
+    getJobs: function(q) {
       // console.log(q);
       // console.log(loc);
-      return axios.get(`http://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?description=${q.search}&location=${q.location}`);
+      return (axios.get(`http://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?description=${q.search}&location=${q.location}`));
+
     },
     // Gets all saved jobs
     getSavedJobs: function() {
