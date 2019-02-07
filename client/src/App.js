@@ -8,21 +8,24 @@ import MainPage from "./pages/MainPage"
 import SignUp from "./pages/SignUp"
 import Search from "./pages/Search"
 import MyResumes from "./pages/MyResumes"
+import Dashboard from "./pages/MainPage"
 
 class App extends Component {
   render() {
     return (
       <Router>
         <div className="App">
-          <NavBar />
-          <Switch>
+          {/* <NavBar /> */}
+          <Dashboard id="main-dash" />
+          {/* <Switch>
             <Route exact path="/" component={SignIn} />
+            <Route exact path="/welcome" component={NavBar} />
             <Route exact path="/SignUp" component={SignUp} />
             <Route exact path="/main" component={MainPage} />
             <Route exact path="/Search" component={Search} />
             <Route exact path="/MyResumes" component={MyResumes} />
             <Route component = {NoMatch} />
-          </Switch>
+          </Switch> */}
         </div>
       </Router>
     );

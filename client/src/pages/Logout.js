@@ -7,7 +7,7 @@ class Logout extends Component {
         .then( resp=>{
             if(resp.status===200){
                 console.log("success")
-                // this.props.history.push("/")
+                this.props.logoutHandler()
             }
         })
     }

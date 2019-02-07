@@ -57,11 +57,13 @@ const styles = theme => ({
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
-function MyReusmes(props) {
-  const { classes } = props;
+class MyReusmes extends React.Component{
+  
 
-  return (
-    <React.Fragment>
+  render(){
+    const { classes } = this.props;
+    return(
+      <React.Fragment>
       <CssBaseline />
       <main>
         {/* Hero unit */}
@@ -81,7 +83,7 @@ function MyReusmes(props) {
                   </Button>
                 </Grid>
                 <Grid item>
-                    <CopyPasteModal />
+                    <CopyPasteModal user = {this.props.user } />
                 </Grid>
               </Grid>
             </div>
@@ -102,8 +104,10 @@ function MyReusmes(props) {
         </div>
       </main>
     </React.Fragment>
-  );
+    )
+  }
 }
+
 
 MyReusmes.propTypes = {
   classes: PropTypes.object.isRequired,
