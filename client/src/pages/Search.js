@@ -4,7 +4,7 @@ import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core";
 import SearchForm from "../Components/SearchForm";
 
-import jobSearchModal from "../Components/JobSearchModal";
+import JobSearchModal from "../Components/JobSearchModal";
 
 import SearchResults from "../pages/SearchResults"
 
