@@ -6,6 +6,7 @@ export default {
       // console.log(q);
       // console.log(loc);
       return (axios.get(`http://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?description=${q.search}&location=${q.location}`));
+
     },
     // Gets all saved jobs
     getSavedJobs: function() {
