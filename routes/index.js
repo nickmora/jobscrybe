@@ -32,7 +32,7 @@ const router = require("express").Router();
 // const resumeRoutes = require("./api/resumeSaved");
 
 const resumeController = require("../controllers/resumecontroller");
-const userController = require("../controllers/userController")
+
 
 const db = require("../models");
 

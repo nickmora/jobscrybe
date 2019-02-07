@@ -45,11 +45,12 @@ class CopyPasteModal extends React.Component {
     if(!this.state.resumeBody){
       alert("You can't save a blank resume!");
     } else{
+      console.log(this.props.user)
       API.addResume({
         title: this.state.title, 
         description:this.state.description,
         body: this.state.resumeBody,
-        user: "default",
+        user: this.props.user,
         date: Date.now
       })
       .then(resp=>{
