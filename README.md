@@ -1,4 +1,4 @@
-# Elliot
+# Jobscrybe
 
 
 Elliot is a single page web application that allow users to search for jobs by keyword and location with the ability store
