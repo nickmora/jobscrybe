@@ -1,7 +1,7 @@
 # Jobscrybe
 
 
-Elliot is a single page web application that allow users to search for jobs by keyword and location with the ability store
+Jobscrybe is a single page web application that allow users to search for jobs by keyword and location with the ability store
 and tailor your resume based on a particular job description. 
 
 ## TEAM:
