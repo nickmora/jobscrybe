@@ -1,9 +1,9 @@
 {
-  "name": "elliot",
+  "name": "jobscrybe",
   "version": "1.0.0",
   "main": "server.js",
-  "repository": "https://github.com/albertshay888/elliot.git",
-  "author": "MrInP <isra_pena@yahoo.com>",
+  "repository": "https://github.com/albertshay888/jobscrybe.git",
+  "author": "Albert Shay, Nick Morales, Isreal P. Buenrostro",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.18.0",

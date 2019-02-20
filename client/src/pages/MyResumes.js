@@ -74,6 +74,10 @@ class MyReusmes extends React.Component{
     })
   }
 
+  handleResumeDelete = id => {
+    API.deleteResume(id).then(res => this.getResumes());
+  };
+
 
 
   render(){
@@ -131,7 +135,9 @@ class MyReusmes extends React.Component{
         }
           </Grid>
         </div>
+     
       </main>
+
     </React.Fragment>
     )
   }
