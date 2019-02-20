@@ -24,12 +24,19 @@ export default {
       console.log(data)
       return axios.post("/api/saveResume", data);
     },
+ 
+
     logout: function(){
       return axios.get("/logout");
     },
 
     getResumes: function(user) {
       return axios.get("/api/resume/" + user);
+    },
+
+    // Deletes the saved resume with the given id
+    deleteResume: function(id) {
+      return axios.delete("/api/resume/" + id);
     },
 
     getSavedJobs: function(){
