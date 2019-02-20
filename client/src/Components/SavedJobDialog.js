@@ -53,7 +53,7 @@ class MaxWidthDialog extends React.Component {
           </DialogContent>
           <DialogActions>
             <UnsaveButton 
-                // user = {this.props.user} jobInfo = {this.props.jobInfo}
+                user = {this.props.user} jobInfo = {this.props.jobInfo}
             
              />
             <Button onClick={this.handleClose} color="primary">
